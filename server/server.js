@@ -21,6 +21,17 @@ app.post("/todos", (req, res) => {
   );
 });
 
+app.get("/todos", (req, res) => {
+  Todo.find().then(
+    todos => {
+      res.send({ todos });
+    },
+    err => {
+      res.status(400).send(err);
+    }
+  );
+});
+
 app.listen(8000, () => {
   console.log("Running on port 8000");
 });
